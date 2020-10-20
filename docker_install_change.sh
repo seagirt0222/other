@@ -32,3 +32,6 @@ service docker start
 sudo docker info | grep "Docker Root Dir"
 sleep 3
 echo "Change Docker Path Sussus" && exit 0
+
+
+
