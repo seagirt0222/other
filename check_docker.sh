@@ -1,3 +1,7 @@
+#!/bin/sh
+
+sudo timedatectl set-timezone Asia/Taipei
+
 if [ -d "/var/lib/docker" ]; then
     # 目錄 /path/to/dir 存在
     echo "Docker is already installed."
@@ -11,8 +15,12 @@ else
    sudo apt-get update
    
    sudo apt-get install docker-ce -y 
+   echo "Docker is install  success."
+   sleep 5
    
    sudo apt-get install docker-compose -y
-   
+   echo "Docker is install success."
+   sleep 5
 fi
+
 
