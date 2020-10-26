@@ -6,19 +6,19 @@ read ANS
 case $ANS in
   1) git clone https://github.com/seagirt0222/kafka-docker
      git clone https://github.com/deviantony/docker-elk
-    echo "git clone Kafka+Elk OK";;
+    echo "Git clone Kafka+Elk OK";;
 
   2) git clone https://github.com/seagirt0222/grafana
-    echo "git clone Grafana OK ";;
+    echo "Git clone Grafana OK ";;
 
   3) git clone https://github.com/seagirt0222/tick
-    echo "git clone Tick OK";;
+    echo "Git clone Tick OK";;
 
   4) sudo timedatectl set-timezone Asia/Taipei
     #check install 
      if [ -d "/var/lib/docker" ]; then
     # 目錄 /path/to/dir 存在
-     echo "Docker is already installed."
+     echo "Docker is Already Installed."
      else
     # 目錄 /path/to/dir 不存在
      curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -29,18 +29,18 @@ case $ANS in
      sudo apt-get update
 
      sudo apt-get install docker-ce -y
-     echo "Docker is install  success."
+     echo "Docker Install  Success."
      sleep 5
 
      sudo apt-get install docker-compose -y
-     echo "Docker is install success."
+     echo "Docker-comopse Install Success."
      sleep 5
      fi
 
-     echo "install docker-compose OK";;
+     echo "Install Docker-compose OK";;
 
   5) sudo apt-get install docker-compose -y
-    echo "install docker-compose OK";;
+    echo "Install Docker-compose Success";;
   *)
    echo "只能按1,2,3,4,5的按鍵";;
 esac
