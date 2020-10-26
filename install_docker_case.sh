@@ -1,10 +1,11 @@
 #!/bin/bash
-echo "1.git kafka+elk，2.git grafana，3.git tick，4.install docker，5.install docker-compose"
+echo "1.git kafka+elk，2.git grafana，3.git tick，4.install docker&compose，5.Only install compose"
 echo -n "Chiose："
 read ANS
 
 case $ANS in
   1) git clone https://github.com/seagirt0222/kafka-docker
+     git clone https://github.com/deviantony/docker-elk
     echo "git clone Kafka+Elk OK";;
 
   2) git clone https://github.com/seagirt0222/grafana
