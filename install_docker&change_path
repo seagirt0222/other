@@ -28,7 +28,7 @@ service docker stop
 sleep 3
 
 read -p "Input Change Folder Path"  folder_ID
-echo  -e "Change Folder Path to "${PTT_ID}"" 
+echo  -e "Change Folder Path to "${folder_ID}" " 
 
 mv /var/lib/docker ${folder_ID}
 sleep 3
