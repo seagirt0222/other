@@ -4,12 +4,10 @@ echo -n "Chiose："
 read ANS
 
 case $ANS in
-  1) cat <<EOF | sudo tee /etc/apt/sources.list.d/influxdata.list
-     deb https://repos.influxdata.com/ubuntu bionic stable
-     EOF
-
-     sudo curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
-
+  1) wget -qO- https://repos.influxdata.com/influxdb.key | sudo apt-key add -
+     source /etc/lsb-release
+     echo "deb https://repos.influxdata.com/${DISTRIB_ID,,} ${DISTRIB_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
+     
      sudo apt-get update
      sleep 5
      sudo apt-get -y install telegraf
