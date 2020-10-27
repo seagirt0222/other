@@ -1,16 +1,4 @@
 #!/bin/bash
-  
-if [ -d "/var/lib/docker" ]; then
-            # 目錄 /path/to/dir 存在
-    echo "Docker is Already Installed."
-
-#!/bin/bash
-
-if [ -d "/var/lib/docker" ]; then
-            # 目錄 /path/to/dir 存在
-    echo "Docker is Already Installed."
-
-#!/bin/bash
 
 if [ -d "/var/lib/docker" ]; then
             # 目錄 /path/to/dir 存在
