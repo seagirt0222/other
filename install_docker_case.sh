@@ -41,6 +41,32 @@ case $ANS in
 
   5) sudo apt-get install docker-compose -y
     echo "Install Docker-compose Success";;
+    
+    
+  6) sudo docker info | grep "Docker Root Dir"
+     service docker stop
+     sleep 3
+
+     read -p "Input Change Folder Path"  folder_ID
+     echo  -e "Change Folder Path to "${folder_ID}" " 
+
+     mv /var/lib/docker ${folder_ID}
+     sleep 3
+
+     ln -s ${folder_ID} /var/lib/docker
+     sleep 3
+
+     sudo cat <<EOF > /etc/default/docker
+     OPTIONS=--graph="${folder_ID}" -H fd://                 
+     EOF
+
+     service docker start
+
+     sudo docker info | grep "Docker Root Dir"
+     sleep 3
+     echo "Change Docker Path Sussus & Please restart the device " && exit 0
+    
+    
   *)
    echo "只能按1,2,3,4,5的按鍵";;
 esac
