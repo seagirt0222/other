@@ -40,27 +40,28 @@ case $ANS in
      echo "Install Docker-compose OK";;
     
   5) sudo docker info | grep "Docker Root Dir"
-     service docker stop
-     sleep 3
 
-     read -p "Input Change Folder Path"  folder_ID
-     echo  -e "Change Folder Path to "${folder_ID}" " 
+service docker stop
+sleep 3
 
-     mv /var/lib/docker ${folder_ID}
-     sleep 3
+read -p "Input Change Folder Path"  folder_ID
+echo  -e "Change Folder Path to "${folder_ID}" " 
 
-     ln -s ${folder_ID} /var/lib/docker
-     sleep 3
+mv /var/lib/docker ${folder_ID}
+sleep 3
 
-     sudo cat <<EOF > /etc/default/docker
-     OPTIONS=--graph="${folder_ID}" -H fd://                 
-     EOF
+ln -s ${folder_ID} /var/lib/docker
+sleep 3
 
-     service docker start
+sudo cat <<EOF > /etc/default/docker
+OPTIONS=--graph="/data2/docker" -H fd://                 
+EOF
 
-     sudo docker info | grep "Docker Root Dir"
-     sleep 3
-     echo "Change Docker Path Sussus & Please restart the device " && exit 0  ;;
+service docker start
+
+sudo docker info | grep "Docker Root Dir"
+sleep 3
+echo "Change Docker Path Sussus & Please restart the device " && exit 0  ;;
     
     
   *)
