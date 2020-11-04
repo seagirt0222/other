@@ -64,7 +64,7 @@ case $ANS in
 
      sudo docker info | grep "Docker Root Dir"
      sleep 3
-     echo "Change Docker Path Sussus & Please restart the device " && exit 0
+     echo "Change Docker Path Sussus & Please restart the device " && exit 0  ;;
     
     
   *)
