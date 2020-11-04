@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "1.git kafka+elk，2.git grafana，3.git tick，4.install docker&compose，5.Only install compose"
+echo "1.git kafka+elk，2.git grafana，3.git tick，4.install docker&compose，5.change docker folder " 
 echo -n "Chiose："
 read ANS
 
@@ -38,12 +38,8 @@ case $ANS in
      fi
 
      echo "Install Docker-compose OK";;
-
-  5) sudo apt-get install docker-compose -y
-    echo "Install Docker-compose Success";;
     
-    
-  6) sudo docker info | grep "Docker Root Dir"
+  5) sudo docker info | grep "Docker Root Dir"
      service docker stop
      sleep 3
 
