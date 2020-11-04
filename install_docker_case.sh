@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "1.git kafka+elk，2.git grafana，3.git tick，4.install docker&compose，5.change docker folder " 
+echo "1.git kafka+elk，2.git grafana，3.git tick，4.docker&compose，5.change docker folder " 
 echo -n "Chiose："
 read ANS
 
@@ -44,8 +44,8 @@ case $ANS in
 service docker stop
 sleep 3
 
-read -p "Input Change Folder Path"  folder_ID
-echo  -e "Change Folder Path to "${folder_ID}" " 
+read -p "Input Change Folder Path :"  folder_ID
+echo  -e "Change Folder Path To :"${folder_ID}" " 
 
 mv /var/lib/docker ${folder_ID}
 sleep 3
@@ -65,5 +65,5 @@ echo "Change Docker Path Sussus & Please restart the device " && exit 0  ;;
     
     
   *)
-   echo "只能按1,2,3,4,5,6的按鍵";;
+   echo "只能按1,2,3,4,5的按鍵";;
 esac
