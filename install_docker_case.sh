@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "1.git kafka+elk，2.git grafana，3.git tick，4.docker&compose，5.change docker folder " 
+echo "1.git kafka+elk，2.git grafana，3.git tick，4.install telegraf，5.install filebeat，6.docker&compose，7.change docker folder " 
 echo -n "Chiose："
 read ANS
 
@@ -13,19 +13,37 @@ case $ANS in
 
   3) git clone https://github.com/seagirt0222/tick
     echo "Git clone Tick OK";;
-
-  4) sudo timedatectl set-timezone Asia/Taipei
+    
+  4) wget -qO- https://repos.influxdata.com/influxdb.key | sudo apt-key add -
+source /etc/lsb-release
+echo "deb https://repos.influxdata.com/${DISTRIB_ID,,} ${DISTRIB_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
+sleep 3
+ 
+ sudo apt-get update && sudo apt-get install telegraf
+ sudo systemctl start telegraf
+ 
+ echo "install telegraf OK";;
+    
+  5) wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+sleep 3
+sudo apt-get install apt-transport-https
+sudo apt update
+sudo apt install filebeat
+    echo "install filebeat OK";;
+    
+  6) sudo timedatectl set-timezone Asia/Taipei
     #check install 
      if [ -d "/var/lib/docker" ]; then
     # 目錄 /path/to/dir 存在
      echo "Docker is Already Installed."
      else
     # 目錄 /path/to/dir 不存在
-     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-     sudo add-apt-repository \
-     "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-     $(lsb_release -cs) \
-     stable"
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository \
+"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+$(lsb_release -cs) \
+stable"
      sudo apt-get update
 
      sudo apt-get install docker-ce -y
@@ -39,7 +57,7 @@ case $ANS in
 
      echo "Install Docker-compose OK";;
     
-  5) sudo docker info | grep "Docker Root Dir"
+  7) sudo docker info | grep "Docker Root Dir"
 
 service docker stop
 sleep 3
@@ -65,5 +83,5 @@ echo "Change Docker Path Sussus & Please restart the device " && exit 0  ;;
     
     
   *)
-   echo "只能按1,2,3,4,5的按鍵";;
+   echo "只能按1,2,3,4,5,6,7的按鍵";;
 esac
