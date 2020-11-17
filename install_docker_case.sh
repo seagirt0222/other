@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "1.git kafka+elk，2.git grafana，3.git tick，4.install telegraf，5.install filebeat，6.docker&compose，7.change docker folder " 
+echo "1.git kafka+elk，2.git grafana，3.git tick，4.install telegraf，5.install filebeat，6.docker&compose，7.change docker folder，8.sudo docker " 
 echo -n "Chiose："
 read ANS
 
@@ -81,6 +81,11 @@ sudo docker info | grep "Docker Root Dir"
 sleep 3
 echo "Change Docker Path Sussus & Please restart the device " && exit 0  ;;
     
+   8) #sudo groupadd docker
+sudo gpasswd -a ${USER} docker
+sudo service docker restart
+newgrp - docker
+    echo "docker don't use sudo OK ";;
     
   *)
    echo "只能按1,2,3,4,5,6,7的按鍵";;
