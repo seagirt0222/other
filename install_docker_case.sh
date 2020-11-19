@@ -88,5 +88,5 @@ newgrp - docker
     echo "docker don't use sudo OK ";;
     
   *)
-   echo "只能按1,2,3,4,5,6,7的按鍵";;
+   echo "只能按1,2,3,4,5,6,7,8的按鍵";;
 esac
