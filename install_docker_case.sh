@@ -33,6 +33,9 @@ sudo apt install filebeat
     echo "install filebeat";;
     
   6) sudo timedatectl set-timezone Asia/Taipei
+  
+sudo apt-get update 
+
 #check install 
 if [ -d "/var/lib/docker" ]; then
 # 目錄 /path/to/dir 存在
