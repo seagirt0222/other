@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "1.git kafka+elk，2.git grafana，3.git tick，4.install telegraf，5.install filebeat，6.docker&compose，7.change docker folder，8.sudo docker " 
+echo "1.git kafka+elk，2.git grafana，3.git tick，4.telegraf，5.filebeat，6.docker&compose，7.change docker folder，8.sudo docker，9.install SSL" 
 echo -n "Chiose："
 read ANS
 
@@ -88,7 +88,16 @@ sudo gpasswd -a ${USER} docker
 sudo service docker restart
 newgrp - docker
 echo "docker don't use sudo OK ";;
-    
+
+   9) sudo apt-get update
+sudo apt-get install software-properties-common -y
+sudo add-apt-repository universe
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt-get update
+sleep 2 
+sudo apt-get install certbot python3-certbot-nginx -y
+sudo certbot --nginx
+echo "Letsencrypt SSL install OK";;
   *)
    echo "只能按1,2,3,4,5,6,7,8的按鍵";;
 esac
