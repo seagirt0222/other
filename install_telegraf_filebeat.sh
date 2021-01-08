@@ -1,5 +1,5 @@
 #/bin/sh
-echo "1.install Telegraf，2.install Filebeat"
+echo "install : 1.Telegraf，2.Filebeat"
 echo -n "Chiose："
 read ANS
 
