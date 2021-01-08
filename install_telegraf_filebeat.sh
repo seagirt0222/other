@@ -26,4 +26,4 @@ case $ANS in
      
      echo "Install Filebeat OK";;
       *)
-   echo "目前只有2個選項,只能按1,2,的按鍵";;
+   echo "Only chioese number [ 1 , 2 ]";;
