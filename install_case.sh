@@ -7,18 +7,28 @@ case $ANS in
 # git kafka
   1) git clone https://github.com/seagirt0222/kafka-docker
      git clone https://github.com/deviantony/docker-elk
-    echo "Git clone Kafka+Elk OK";;
+    echo "Clone Kafka+Elk OK";;
     
 # git grafana
   2) git clone https://github.com/seagirt0222/grafana
-    echo "Git clone Grafana OK ";;
+    echo "GClone Grafana OK ";;
 
 # git tick
   3) git clone https://github.com/seagirt0222/tick
-    echo "Git clone Tick OK";;
+    echo "Clone Tick OK";;
+    
+# git zabbix
+   4) git clone https://github.com/seagirt0222/zabbix
+    echo "Clone Zabbix OK";;
+   
+#sudo groupadd docker
+#sudo gpasswd -a ${USER} docker
+#sudo service docker restart
+#newgrp - docker
+#echo "docker don't use sudo OK ";;
     
 #  install telegraf   
-  4) wget -qO- https://repos.influxdata.com/influxdb.key | sudo apt-key add -
+  5) wget -qO- https://repos.influxdata.com/influxdb.key | sudo apt-key add -
 source /etc/lsb-release
 echo "deb https://repos.influxdata.com/${DISTRIB_ID,,} ${DISTRIB_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
 sleep 2
@@ -29,7 +39,7 @@ sudo systemctl start telegraf
 echo "install telegraf";;
 
 # install filebeat
-  5) wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+  6) wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
 sleep 3
 sudo apt-get install apt-transport-https
@@ -38,7 +48,7 @@ sudo apt install filebeat
     echo "install filebeat";;
     
 # install docker & docker-compose     
-  6) sudo timedatectl set-timezone Asia/Taipei
+  7) sudo timedatectl set-timezone Asia/Taipei
   
 sudo apt-get update 
 
@@ -67,7 +77,7 @@ fi
 echo "Install Docker-compose OK";;
     
 # change docker folder     
-  7) sudo docker info | grep "Docker Root Dir"
+  8) sudo docker info | grep "Docker Root Dir"
 service docker stop
 sleep 2
 
@@ -90,12 +100,6 @@ sudo docker info | grep "Docker Root Dir"
 sleep 3
 echo "Change Docker Path Sussus & Please restart the device " && exit 0  ;;
  
-# docker sudo  
-   8) #sudo groupadd docker
-sudo gpasswd -a ${USER} docker
-sudo service docker restart
-newgrp - docker
-echo "docker don't use sudo OK ";;
 
 #install SSL 
    9) sudo apt-get update
