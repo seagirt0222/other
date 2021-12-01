@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "1.git kafka+elk，2.git grafana，3.git tick，4.telegraf，5.filebeat，6.docker&compose，7.change docker folder，8.sudo docker，9.install SSL" 
+echo "1.git kafka+elk，2.git grafana，3.git tick，4.git zabbix，5.telegraf，6.filebeat，7.docker&compose，8.change docker folder，9.install SSL" 
 echo -n "Chiose："
 read ANS
 
