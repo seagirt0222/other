@@ -6,7 +6,7 @@ read ANS
 case $ANS in
 # git kafka
   1) git clone https://github.com/seagirt0222/kafka-docker
-     git clone https://github.com/deviantony/docker-elk
+     git clone https://github.com/seagirt0222/docker-elk
     echo "Clone Kafka+Elk OK";;
     
 # git grafana
