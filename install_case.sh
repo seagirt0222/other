@@ -112,5 +112,22 @@ sudo apt-get install certbot python3-certbot-nginx -y
 sudo certbot --nginx
 echo "Letsencrypt SSL install OK";;
   *)
-   echo "input number key[1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9]";;
+  
+  
+# docker no use sudo  
+     0) sudo apt-get update
+     
+sudo groupadd docker
+
+sudo gpasswd -a ${USER} docker
+
+sudo service docker restart
+
+newgrp - docker
+
+echo "Docker sudo Success."
+
+sleep 2
+     
+   echo "input number key[1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 0]";;
 esac
