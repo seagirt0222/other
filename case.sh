@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "1.git kafka+elk，2.git grafana，3.git tick，4.git zabbix，5.telegraf，6.filebeat，7.docker&compose，8.change docker folder，9.install SSL" 
+echo "1.git kafka+elk，2.git grafana，3.git tick，4.git zabbix，5.telegraf，6.filebeat，7.docker&compose，8.change docker folder，9.install SSL，0.docker no sudo " 
 echo -n "Chiose："
 read ANS
 
@@ -128,6 +128,27 @@ newgrp - docker
 echo "Docker sudo Success" && exit 0  ;;
 
 sleep 2
+
+# install zabbix- agent2
+     11) sudo apt-get update
      
-   echo "input number key[1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 0]";;
+sudo wget https://repo.zabbix.com/zabbix/5.4/debian/pool/main/z/zabbix-release/zabbix-release_5.4-1+debian11_all.deb
+
+sudo dpkg -i zabbix-release_5.4-1+debian11_all.deb
+
+sudo apt-get update
+
+sudo install zabbix-agent2
+
+sudo systemctl start zabbix-agent2.service
+
+sudo systemctl enable zabbix-agent2.service
+
+sudo systemctl status zabbix-agent2.service
+
+echo "zabbix-agent2 install Success" && exit 0  ;;
+
+sleep 2
+     
+   echo "input number key[1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 0 , 11 ]";;
 esac
