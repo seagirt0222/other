@@ -66,11 +66,11 @@ stable"
 sudo apt-get update
 
 sudo apt-get install docker-ce -y
-echo "Docker Install  Success";;
+echo "Docker Install  Success" && exit 0 ;;
 sleep 2
 
 sudo apt-get install docker-compose -y
-echo "Docker-comopse Install Success";;
+echo "Docker-comopse Install Success" && exit 0 ;;
 sleep 2
 fi
 
