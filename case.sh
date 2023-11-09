@@ -18,7 +18,7 @@ case $ANS in
     echo "Clone Tick OK";;
     
 # git zabbix
-   4) git clone https://github.com/seagirt0222/zabbix
+  4) git clone https://github.com/seagirt0222/zabbix
     echo "Clone Zabbix OK";;
    
 #sudo groupadd docker
@@ -58,14 +58,29 @@ if [ -d "/var/lib/docker" ]; then
 echo "Docker is Already Installed."
 else
 # 目錄 /path/to/dir 不存在
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository \
-"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-$(lsb_release -cs) \
-stable"
+#curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+#sudo add-apt-repository \
+#"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+#$(lsb_release -cs) \
+#stable"
+
+# Add Docker's official GPG key:
+sudo apt-get update
+sudo apt-get install ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  
 sudo apt-get update
 
-sudo apt-get install docker-ce -y
+#sudo apt-get install docker-ce -y
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 echo "Docker Install  Success" && exit 0 ;;
 sleep 2
 
@@ -90,9 +105,9 @@ sleep 2
 ln -s ${folder_ID} /var/lib/docker
 sleep 2
 
-sudo cat <<EOF > /etc/default/docker
-OPTIONS=--graph="/data2/docker" -H fd://                 
-EOF
+#sudo cat <<EOF > /etc/default/docker
+#OPTIONS=--graph="/data/docker" -H fd://                 
+#EOF
 
 service docker start
 
@@ -102,7 +117,7 @@ echo "Change Docker Path Sussus & Please restart the device " && exit 0  ;;
  
 
 #install SSL 
-   9) sudo apt-get update
+   ８) sudo apt-get update
 sudo apt-get install software-properties-common -y
 sudo add-apt-repository universe
 sudo add-apt-repository ppa:certbot/certbot
