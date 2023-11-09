@@ -51,7 +51,6 @@ sudo apt install filebeat
   7) sudo timedatectl set-timezone Asia/Taipei
   
 sudo apt-get update 
-
 #check install 
 if [ -d "/var/lib/docker" ]; then
 # 目錄 /path/to/dir 存在
@@ -65,7 +64,6 @@ else
 #stable"
 
 # Add Docker's official GPG key:
-sudo apt-get update
 sudo apt-get install ca-certificates curl gnupg
 sudo install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
@@ -81,11 +79,11 @@ sudo apt-get update
 
 #sudo apt-get install docker-ce -y
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
-echo "Docker Install  Success" && exit 0 ;;
+echo "Docker Install  Success" && exit 0;;
 sleep 2
 
 sudo apt-get install docker-compose -y
-echo "Docker-comopse Install Success" && exit 0 ;;
+echo "Docker-comopse Install Success" && exit 0;;
 sleep 2
 fi
 
@@ -113,7 +111,7 @@ service docker start
 
 sudo docker info | grep "Docker Root Dir"
 sleep 3
-echo "Change Docker Path Sussus & Please restart the device " && exit 0  ;;
+echo "Change Docker Path Sussus & Please restart the device " && exit 0;;
  
 
 #install SSL 
